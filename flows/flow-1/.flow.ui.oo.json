@@ -1,0 +1,134 @@
+{
+  "nodes": {
+    "scriptlet:typescript#1": {
+      "contentWidth": 1039.6017379849336,
+      "rfNode": {
+        "position": {
+          "x": -83.74213858540918,
+          "y": -2043.1930151326374
+        }
+      },
+      "sections": {
+        "scriptlet": {
+          "cardCollapsed": true
+        },
+        "preview": {
+          "cardCollapsed": true
+        }
+      }
+    },
+    "scriptlet:typescript#3": {
+      "contentWidth": 869.8057960748095,
+      "rfNode": {
+        "position": {
+          "x": -967.7421385854092,
+          "y": -2043.1930151326374
+        }
+      },
+      "sections": {
+        "scriptlet": {
+          "cardCollapsed": true
+        },
+        "preview": {
+          "cardCollapsed": true
+        }
+      }
+    },
+    "markdown-preview#1": {
+      "contentWidth": 845.8738623448824,
+      "rfNode": {
+        "position": {
+          "x": -1182.1908872462677,
+          "y": -121.80792441519804
+        }
+      },
+      "sections": {
+        "inputs": {
+          "collapsed": {
+            "text": {
+              "[]": true
+            }
+          }
+        }
+      }
+    },
+    "markdown-preview#2": {
+      "contentWidth": 699.9800079680463,
+      "rfNode": {
+        "position": {
+          "x": -1202.0630613163826,
+          "y": 474.692106961035
+        }
+      },
+      "sections": {
+        "inputs": {
+          "collapsed": {
+            "text": {
+              "[]": true
+            }
+          }
+        }
+      }
+    },
+    "+typescript#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": -1796.525140849054,
+          "y": -700.807924415198
+        }
+      },
+      "sections": {
+        "scriptlet": {
+          "cardCollapsed": true
+        }
+      }
+    },
+    "+typescript#2": {
+      "contentWidth": 924.8508241965344,
+      "rfNode": {
+        "position": {
+          "x": -1940.726670136409,
+          "y": -2043.1930151326374
+        }
+      },
+      "sections": {
+        "scriptlet": {
+          "cardCollapsed": true
+        }
+      }
+    },
+    "markdown-preview#4": {
+      "contentWidth": 759.8401392919851,
+      "rfNode": {
+        "position": {
+          "x": 25.829587987748823,
+          "y": 554.1059547286883
+        }
+      }
+    },
+    "+typescript#3": {
+      "contentWidth": 688.7208459435736,
+      "rfNode": {
+        "position": {
+          "x": 1072.8777683929372,
+          "y": -2043.1930151326374
+        }
+      },
+      "sections": {
+        "scriptlet": {
+          "cardCollapsed": true
+        }
+      }
+    },
+    "markdown-preview#5": {
+      "contentWidth": 1084.3805077454556,
+      "rfNode": {
+        "position": {
+          "x": -1228.9647533989,
+          "y": -715.6773549548387
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+inputs_def:
+  - handle: in
+    description: Input
+    json_schema:
+      type: object
+      properties:
+        birthType:
+          type: string
+          enum:
+            - 公历
+            - 农历
+        birthDay:
+          type: string
+          format: date-time
+        sex:
+          type: string
+          enum:
+            - 男
+            - 女
+        prediction:
+          type: string
+          enum:
+            - 姻缘家庭
+            - 事业学业
+            - 财运运势
+            - 健康状况
+            - 出行旅行
+            - 失物找寻
+    value:
+      birthType: 农历
+      birthDay: 1995-05-04T12:03:00+08:00
+      sex: 男
+      prediction: 姻缘家庭
+outputs_def:
+  - handle: out
+    description: Output
+    json_schema:
+      type: string
+      ui:widget: file
+ui:
+  default_width: 350
+executor:
+  name: nodejs
+  options:
+    entry: main.ts
+    spawn: false
+title: "周易八卦 #2"

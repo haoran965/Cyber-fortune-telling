@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "openai": "^4.78.1"
+  }
+}

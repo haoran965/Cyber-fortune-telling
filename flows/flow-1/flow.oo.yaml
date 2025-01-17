@@ -1,0 +1,308 @@
+nodes:
+  - task:
+      ui:
+        default_width: 350
+      icon: https://api.iconify.design/skill-icons:typescript.svg?color=%23888888
+      inputs_def:
+        - handle: in
+          description: Input
+          json_schema:
+            contentMediaType: oomol/var
+            type:
+              - string
+          value: ""
+      outputs_def:
+        - handle: text
+          json_schema:
+            type: string
+            ui:widget: text
+      executor:
+        name: nodejs
+        options:
+          entry: scriptlets/scriptlet+typescript#1.ts
+          spawn: false
+    title: "奇门遁甲"
+    node_id: scriptlet:typescript#1
+    inputs_from:
+      - handle: in
+        value: 2025年我能不能找到对象
+        from_node:
+          - node_id: +typescript#1
+            output_handle: output
+  - task:
+      ui:
+        default_width: 350
+      icon: https://api.iconify.design/skill-icons:typescript.svg?color=%23888888
+      inputs_def:
+        - handle: in
+          description: Input
+          json_schema:
+            type: object
+            properties:
+              birthType:
+                type: string
+                enum:
+                  - 公历
+                  - 农历
+              birthDay:
+                type: string
+                format: date-time
+              sex:
+                type: string
+                enum:
+                  - 男
+                  - 女
+              prediction:
+                type: string
+                enum:
+                  - 姻缘家庭
+                  - 事业学业
+                  - 财运运势
+                  - 健康状况
+                  - 出行旅行
+                  - 失物找寻
+      outputs_def:
+        - handle: text
+          description: Output
+          json_schema:
+            type: string
+            ui:widget: text
+      executor:
+        name: nodejs
+        options:
+          entry: scriptlets/scriptlet+typescript#3.ts
+          spawn: false
+    title: 周易八卦
+    node_id: scriptlet:typescript#3
+    inputs_from:
+      - handle: in
+        value:
+          birthType: 农历
+          birthDay: 1995-05-04T12:05:00+08:00
+          sex: 男
+          prediction: 事业学业
+        from_node:
+          - node_id: +typescript#1
+            output_handle: output
+  - task: oomol-preview::markdown-preview
+    title: "奇门遁甲测算结果"
+    node_id: markdown-preview#1
+    inputs_from:
+      - handle: text
+        value: ""
+        from_node:
+          - node_id: scriptlet:typescript#1
+            output_handle: text
+  - node_id: markdown-preview#2
+    node_type: task_node
+    title: "周易八卦测算结果"
+    inputs_from:
+      - handle: text
+        value: ""
+        from_node:
+          - node_id: scriptlet:typescript#3
+            output_handle: text
+    task: oomol-preview::markdown-preview
+  - task:
+      ui:
+        default_width: 450
+      inputs_def:
+        - handle: input
+          description: Input
+          json_schema:
+            type: object
+            additionalProperties: false
+            properties:
+              birthType:
+                enum:
+                  - 公历
+                  - 农历
+                ui:options:
+                  labels:
+                    - 公历
+                    - 农历
+              deepKey:
+                contentMediaType: oomol/secret
+                type: string
+              birthDay:
+                type: string
+                format: date-time
+              sex:
+                enum:
+                  - 男
+                  - 女
+                ui:options:
+                  labels:
+                    - 男
+                    - 女
+              position:
+                type: string
+              desc:
+                type: string
+                ui:widget: text
+          kind: 公历/农历
+          nullable: false
+      outputs_def:
+        - handle: output
+          description: Output
+          json_schema:
+            type: object
+            additionalProperties: false
+            properties:
+              desc:
+                type: string
+              sex:
+                enum:
+                  - 男
+                  - 女
+                ui:options:
+                  labels:
+                    - 男
+                    - 女
+              birthType:
+                enum:
+                  - 公历
+                  - 农历
+                ui:options:
+                  labels:
+                    - 公历
+                    - 农历
+              birthDay:
+                type: string
+                format: date-time
+              position:
+                type: string
+              deepKey:
+                contentMediaType: oomol/secret
+                type: string
+      executor:
+        name: nodejs
+        options:
+          entry: scriptlets/+typescript#1.ts
+    title: 输入
+    icon: ":skill-icons:typescript:"
+    node_id: +typescript#1
+    inputs_from:
+      - handle: input
+        value:
+          birthType: 农历
+          deepKey: OpenAICompatible,deep-seek,OPENAI_API_KEY
+          birthDay: 1995-05-04T12:04:00+08:00
+          sex: 男
+          position: 杭州市余杭区
+          desc: 今年(2025年) 我能否从股票中赚到钱, 如果能 我能赚到多少钱
+  - task:
+      ui:
+        default_width: 450
+      inputs_def:
+        - handle: input
+          description: Input
+          json_schema:
+            type: object
+            additionalProperties: false
+            properties:
+              birthType:
+                enum:
+                  - 公历
+                  - 农历
+                ui:options:
+                  labels:
+                    - 公历
+                    - 农历
+              birthDay:
+                type: string
+                format: date-time
+              sex:
+                enum:
+                  - 男
+                  - 女
+                ui:options:
+                  labels:
+                    - 男
+                    - 女
+              desc:
+                type: string
+              position:
+                type: string
+              deepKey:
+                type: string
+          nullable: false
+      outputs_def:
+        - handle: text
+          description: Output
+          json_schema:
+            type: string
+      executor:
+        name: nodejs
+        options:
+          entry: scriptlets/+typescript#2.ts
+    title: 紫薇斗数
+    icon: ":skill-icons:typescript:"
+    node_id: +typescript#2
+    inputs_from:
+      - handle: input
+        from_node:
+          - node_id: +typescript#1
+            output_handle: output
+  - task: oomol-preview::markdown-preview
+    title: 紫薇斗数测算结果
+    node_id: markdown-preview#4
+    inputs_from:
+      - handle: text
+        value: ""
+        from_node:
+          - node_id: +typescript#2
+            output_handle: text
+  - task:
+      ui:
+        default_width: 450
+      inputs_def:
+        - handle: result1
+          description: Input
+          json_schema:
+            type: string
+        - handle: result2
+          json_schema:
+            type: string
+        - handle: result3
+          json_schema:
+            type: string
+        - handle: deepKey
+          json_schema:
+            contentMediaType: oomol/secret
+            type: string
+      outputs_def:
+        - handle: text
+          description: Output
+          json_schema:
+            type: string
+      executor:
+        name: nodejs
+        options:
+          entry: scriptlets/+typescript#3.ts
+    title: "TypeScript #3"
+    icon: ":skill-icons:typescript:"
+    node_id: +typescript#3
+    inputs_from:
+      - handle: result1
+        from_node:
+          - node_id: +typescript#2
+            output_handle: text
+      - handle: result2
+        from_node:
+          - node_id: scriptlet:typescript#3
+            output_handle: text
+      - handle: result3
+        from_node:
+          - node_id: scriptlet:typescript#1
+            output_handle: text
+      - handle: deepKey
+        value: OpenAICompatible,deep-seek,OPENAI_API_KEY
+  - task: oomol-preview::markdown-preview
+    title: 测算结果总结
+    node_id: markdown-preview#5
+    inputs_from:
+      - handle: text
+        from_node:
+          - node_id: +typescript#3
+            output_handle: text

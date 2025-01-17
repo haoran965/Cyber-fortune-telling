@@ -1,0 +1,6 @@
+version: 0.0.1
+scripts:
+  bootstrap: |
+    pnpm install && pip install --user -r requirements.txt
+dependencies:
+  oomol-preview: 0.0.1
